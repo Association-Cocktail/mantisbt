@@ -183,6 +183,23 @@ print_manage_menu( 'manage_user_page.php' );
 					</label>
 				</td>
 			</tr>
+			<!-- Additional LDAP fields -->
+			<?php if( $t_ldap && ! empty( $g_ldap_cache_fields ) ) {
+					foreach ( $g_ldap_cache_fields as $ldap_field ) { ?>
+			<tr>
+				<td class="category">
+					<?php if ( ! $g_ldap_fields_strings[ $ldap_field ] ) {
+						echo $ldap_field;
+					} else {
+						echo $g_ldap_fields_strings[ $ldap_field ];
+					} ?>
+				</td>
+				<td>
+					<?php echo ldap_get_field_from_username( $t_user['username'], $ldap_field ) ; ?>
+				</td>
+			</tr>
+			<?php }
+					} ?>
 			<!-- Protected Checkbox -->
 			<tr>
 				<td class="category">
