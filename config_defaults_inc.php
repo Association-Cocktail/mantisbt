@@ -2159,6 +2159,12 @@ $g_ldap_simulation_file_path = '';
  */
 $g_ldap_cache_fields = array();
 
+/**
+ * LDAP fields name strings
+ * @global array $g_ldap_fields_strings
+ */
+$g_ldap_fields_strings = array();
+
 ###################
 # Status Settings #
 ###################
@@ -4335,7 +4341,7 @@ $g_global_settings = array(
 	'ldap_server', 'ldap_root_dn', 'ldap_organization', 'ldap_protocol_version',
 	'ldap_network_timeout', 'ldap_follow_referrals', 'ldap_bind_dn', 'ldap_bind_passwd',
 	'ldap_uid_field', 'ldap_realname_field', 'use_ldap_realname', 'use_ldap_email',
-	'ldap_cache_fields'
+	'ldap_cache_fields', 'ldap_fields_strings'
 );
 
 /**

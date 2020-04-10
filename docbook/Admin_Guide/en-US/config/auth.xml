@@ -231,6 +231,7 @@ ldaps://ldap.example.com:3269/
 					the data retrieved from LDAP when ON.</para>
 				</listitem>
 			</varlistentry>
+
 			<varlistentry>
 				<term>$g_ldap_cache_fields</term>
 				<listitem>
@@ -242,6 +243,17 @@ ldaps://ldap.example.com:3269/
 				</listitem>
 			</varlistentry>
 
+			<varlistentry>
+				<term>$g_ldap_fields_strings</term>
+				<listitem>
+					<para>Choose the showable string for the ldap cached 
+						field name.	See $g_ldap_cache_fields.
+						$g_ldap_fields_strings = array(
+						'mobile' => 'Mobile phone number',
+						'roomNumer' => 'Room number' );
+					</para>
+				</listitem>
+			</varlistentry>
 
 			<varlistentry>
 				<term>$g_use_ldap_email</term>

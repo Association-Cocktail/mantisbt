@@ -251,6 +251,20 @@ print_account_menu( 'account_page.php' );
 					<?php echo get_enum_element( 'access_levels', current_user_get_access_level() ); ?>
 				</td>
 			</tr>
+			<?php
+					if( $t_ldap && ! empty( $g_ldap_cache_fields ) ) {
+						foreach ( $g_ldap_cache_fields as $ldap_field ) {
+							echo '<tr>';
+							if ( ! $g_ldap_fields_strings[ $ldap_field ] ) {
+								echo '<td class="category">' . $ldap_field . '</td>';
+							} else {
+								echo '<td class="category">' . $g_ldap_fields_strings[ $ldap_field ] . '</td>';
+							}
+							echo '<td>' . ldap_get_field_from_username( $u_username, $ldap_field ) . '</td>';
+							echo '</tr>';
+						}
+					}
+			?>
 				</fieldset>
 			</table>
 		</div>
