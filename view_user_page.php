@@ -76,6 +76,8 @@ $u_realname = user_get_realname( $u_id );
 
 $t_date_format = config_get( 'normal_date_format' );
 
+$t_ldap = ( LDAP == config_get_global( 'login_method' ) );
+
 layout_page_header();
 
 layout_page_begin();
@@ -139,6 +141,22 @@ $t_timeline_view_class = ( $t_timeline_view_threshold_access ) ? "col-md-7" : "c
 					<?php echo string_display_line( get_enum_element( 'access_levels', $u_access_level ) ); ?>
 				</td>
 			</tr>
+            <?php if( $t_ldap && ! empty( $g_ldap_cache_fields ) ) {
+                      foreach ( $g_ldap_cache_fields as $ldap_field ) { ?>
+            <tr>
+                <th class="category">
+                    <?php if ( ! $g_ldap_fields_strings[ $ldap_field ] ) {
+                        echo string_display_line( $ldap_field );
+                    } else {
+                        echo string_display_line( $g_ldap_fields_strings[ $ldap_field ] );
+                    } ?>
+                </th>
+                <td>
+                    <?php echo string_display_line( ldap_get_field_from_username( $u_username, $ldap_field ) ); ?>
+                </td>
+            </tr>
+            <?php     } 
+                  } ?>
 			<tr>
 				<th class="category">
 					<?php echo lang_get( 'enabled' ) ?>
